@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="TurboEdit: Text-Based Image Editing Using Few-Step Diffusion Models">
+  <meta name="keywords" content="Few-Step Diffusion Models, Image Editing, Text-to-Image">
+  <meta name="viewport" content="width=device-width, initial-scale=0.1">
+  <title>TurboEdit: Text-Based Image Editing Using Few-Step Diffusion Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">TurboEdit: Text-Based Image Editing Using Few-Step Diffusion Models
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Anonymous Authors
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper (coming soon)</span>
+                  </a>
+                </span>
+
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-widescreen">
+      <div class="container is-max-desktop is-centered has-text-centered">
+        <h2 class="subtitle">
+          TL;DR: We enable text-based image editing using 3-4 step diffusion models. </h2><br>
+      </div>
+      <br>
+      <div class="hero-body">
+        <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+        <div class="container">
+          <div class="item">
+            <div class="column is-centered has-text-centered">
+              <img src="static/images/teaser.jpg" alt="Teaser." />
+            </div>
+          </div>
+        </div>
+        <!--  </div> -->
+      </div>
+    </div>
+    <!--  </div> -->
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- div class="item">
+          <p style="margin-bottom: 30px">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <source src="static/figures/video.mp4"
+          type="video/mp4">
+        </video>
+        </p>
+        </div -->
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Diffusion models have opened the path to a wide range of text-based image
+              editing frameworks. However, these typically build on the multi-step nature
+              of the diffusion backwards process, and adapting them to distilled, fast-
+              sampling methods has proven surprisingly challenging. Here, we focus
+              on a popular line of text-based editing frameworks - the “edit-friendly”
+              DDPM-noise inversion approach. We analyze its application to fast sampling
+              methods and categorize its failures into two classes: the appearance of
+              visual artifacts, and insufficient editing strength. We trace the artifacts to
+              mismatched noise statistics between inverted noises and the expected noise
+              schedule, and suggest a shifted noise schedule which corrects for this offset.
+              To increase editing strength, we propose a pseudo-guidance approach that
+              efficiently increases the magnitude of edits without introducing new artifacts.
+              All in all, our method enables text-based image editing with as few as three
+              diffusion steps, while providing novel insights into the mechanisms behind
+              popular text-based editing approaches.
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">What is this about?</h2>
+          <div class="content has-text-justified">
+          </div>
+
+          <div class="content has-text-justified">
+            We apply text-based editing methods like Edit-Friendly DDPM inversion to SDXL-Turbo and discover two shortcomings: (1) the appearance of visual artifacts, and (2) insufficient editing strength.
+            <br><br>
+            We trace the artifacts to misaligned noise statistics, and propose a time-shifting method to correct them. To improve editing strength, we analyze the Edit-Friendly equations and show that they can be broken into two components - one responsible for shifting the image between prompts, and one for shifting it between diffusion trajectories. We rescale the cross-prompt term and demonstrate that it increases editability without introducing novel artifacts. For additional details please see the paper.
+          </div>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths has-text-centered">
+              <h4 class="title is-4">Fixing Visual Artifacts</h4>
+              <div class="column is-centered has-text-centered">
+                <div class="content has-text-justified">
+                  Following Edit-Friendly, we observe that the noise statistics of the inverted noise-maps deviate significantly from the expected values at each step. In many-step diffusion models, these statistics tend to converge towards the end of the diffusion proccess, and the model can deal with any artifacts introduced along the way. With SDXL-Turbo, these steps are entirely skipped, and artifacts remain.
+                  <br><br>
+                  We observe that the misaligned statistics are roughly time-shifted, with noise statistics matching the expected values at roughly 200 steps earlier. Hence, we simply provide both the scheduler and the model with a timestep parameter which is also shifted by 200 steps, eliminating the domain gap.
+                </div>
+
+                <img id="architecture" src="static/images/z_t_std_plot.jpg" />
+              </div>
+              <div class="content has-text-centered"><small>
+                  Edit-Friendly inversion with SDXL-Turbo leads to noise statistics (red) which are misaligned with the expected values (green). We propose a simple time-shift approach to re-align them (blue, purple), greatly reducing artifacts.
+                </small>
+              </div>
+            </div>
+
+            <div class="column is-four-fifths has-text-centered">
+              <h4 class="title is-4">Pseudo-guidance</h4>
+              <div class="column is-centered has-text-centered">
+                <div class="content has-text-justified">
+                  We analyze the Edit-Friendly equations and demonstrate that they can be decomposted into two terms - one which controls the strength of the prompt, and another which shifts the original images to a new trajectory. We propose to apply a CFG-style rescaling only to the prompt term, and demonstrate that it can indeed improve editing strength without introducing new artifacts. Please see the paper for more details.
+                </div>
+
+                <img id="architecture" src="static/images/guidance_grid.jpg" />
+
+                <div class="content has-text-centered"><small>
+                    Editing results when scaling the cross-prompt ($w_p$, columns) and the cross-trajectory ($w_t$, rows) terms. Scaling only the cross-prompt term leads to improved editing results, without artifacts.
+                  </small>
+                </div>
+              </div>
+              <br>
+              <!--/ Abstract. -->
+            </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- div class="item">
+          <p style="margin-bottom: 30px">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <source src="static/figures/video.mp4"
+          type="video/mp4">
+        </video>
+        </p>
+        </div -->
+          <h2 class="title is-3">Edit Friendly and Delta Denoising Score equivalence</h2>
+          <div class="content has-text-justified">
+            <p>
+              Our investigation into the Edit-Friendly DDPM proccess reveals that it shares similar form to the corrections employed by Delta Denoising Score.
+              Surprisingly, we prove that under an appropriate choice of learning rates and time-step sampling, the two methods are functionally equivalent and create the exact same results.
+              This finding can also be extended to the recent Posterior Distillation Sampling (PDS) method, if applied to image editing.
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+
+  <section class="hero is-small">
+    <div class="container is-max-desktop is-centered">
+
+      <div class="section-title is-centered has-text-centered">
+        <br>
+        <h2 class="title is-3 is-centered">Results</h2>
+        <div class="content has-text-justified">
+        </div>
+      </div>
+
+      <img id="styles" src="static/images/results.jpg" />
+      <div class="content is-four-fifths has-text-centered"><small>
+          Text-based editing results generated using our method with SDXL-Turbo and 4 steps.
+        </small>
+      </div>
+      <!--/ New domain editing. -->
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <!-- Abstract. -->
+
+      <h2 class="title is-3">Comparisons to Prior Work (Multi-step)</h2>
+      <div class="content has-text-justified">
+        We compare our 4-step results to the existing state-of-the-art editing approaches in the many-step regieme. Our method can achieve better or comparable quality to the state-of-the-art, but it does so x6 faster than the fastest baseline, and up to x630 when compared to the top scoring method.
+      </div>
+      <div class="column is-centered has-text-centered is-widescreen">
+        <img id="face_comps" src="static/images/comparisons.jpg" />
+      </div>
+      <!--/ Abstract. -->
+    </div>
+
+    <br>
+    
+    <div class="container is-max-desktop has-text-centered">
+      <!-- Abstract. -->
+
+      <h2 class="title is-3">Comparisons to Prior Work (Few-step)</h2>
+      <div class="content has-text-justified">
+        We further compare our method to few-step alternatives. We can better maintain the original image content while matching the semantic intent of the edit. Our method also avoids the visual artifacts that appear in the baseline Edit-Friendly approach.
+      </div>
+      <div class="column is-centered has-text-centered is-widescreen">
+        <img id="face_comps" src="static/images/comparisons_few_step.jpg" />
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="container is-max-desktop">
+
+      <div class="section-title is-centered has-text-centered">
+        <br>
+        <h2 class="title is-3">More results</h2>
+
+        <div class="column is-centered has-text-centered is-widescreen">
+          <img id="face_comps" src="static/images/more_results.jpg" />
+        </div>
+        <div class="content is-four-fifths has-text-centered"><small>
+          Additional text-based editing results generated using our method with SDXL-Turbo and 4 steps.
+        </small>
+      </div>
+      </div>
+      <!--/ New domain editing. -->
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <p>If you find our work useful, please cite our paper:</p>
+      <pre><code>Coming soon</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Website content is licensed under a <a rel="license"
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
+                Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you
+              want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit
+              them appropriately.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
