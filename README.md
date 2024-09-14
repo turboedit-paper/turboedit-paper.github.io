@@ -1,5 +1,6 @@
 # TurboEdit
-This is the repository that contains source code for the [TurboEdit website](https://turboedit-paper.github.io).
+
+This is the repository that contains source code for the [TurboEdit website](https://turbo-edit.github.io).
 It is based on the code from the [Nerfies website](https://nerfies.github.io). If you reuse this code, please credit them.
 
 

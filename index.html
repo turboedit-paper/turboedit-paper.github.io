@@ -8,6 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.1">
   <title>TurboEdit: Text-Based Image Editing Using Few-Step Diffusion Models</title>
 
+  <!-- Global site tag (gtag.js) - Google Analytics-->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVM9XP0Q0C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-QVM9XP0Q0C');
+  </script> -->
+
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -34,43 +48,73 @@
             <h1 class="title is-1 publication-title">TurboEdit: Text-Based Image Editing Using Few-Step Diffusion Models
             </h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Anonymous Authors
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/gilad-deutsch-33b006130/">Gilad Deutch</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://rinongal.github.io/">Rinon Gal</a><sup>1,</sup><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://garibida.github.io/danielgaribi/">Daniel Garibi</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://orpatashnik.github.io/">Or Patashnik</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.tau.ac.il/~dcor/">Daniel Cohen-Or</a><sup>1</sup>
+              </span>
             </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Tel Aviv University, <sup>2</sup>NVIDIA</span>
+
+            </div>
+
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">SIGGRAPH Asia 2024</span>
+
+            </div>
+
 
 
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://arxiv.org/abs/2408.00735" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                     </span>
-                    <span>Paper (coming soon)</span>
+                    <span>Paper</span>
                   </a>
                 </span>
 
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href=""
+                  <a href="https://github.com/GiilDe/turbo-edit"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
-                    <span>Code (coming soon)</span>
+                    <span>Code</span>
                   </a>
                 </span>
 
-                <!-- Demo Link. -->
                 <span class="link-block">
-                  <a href="https://huggingface.co/spaces/turboedit/turbo_edit"
+                  <a href="https://huggingface.co/spaces/turboedit/turbo-edit"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
-                      <i class="fas fa-laptop"></i>
+                      <svg class="svg-inline--fa fa-laptop fa-w-20" aria-hidden="true" focusable="false"
+                        data-prefix="fas" data-icon="laptop" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z">
+                        </path>
+                      </svg><!-- <i class="fas fa-laptop"></i> Font Awesome fontawesome.com -->
                     </span>
                     <span>Demo</span>
                   </a>
                 </span>
+
 
               </div>
 
@@ -86,7 +130,7 @@
     <div class="container is-widescreen">
       <div class="container is-max-desktop is-centered has-text-centered">
         <h2 class="subtitle">
-          TL;DR: We enable text-based image editing using 3-4 step diffusion models. </h2><br>
+          TL;DR: We enable text-based image editing using 3-4 step diffusion models </h2><br>
       </div>
       <br>
       <div class="hero-body">
@@ -154,9 +198,14 @@
           </div>
 
           <div class="content has-text-justified">
-            We apply text-based editing methods like Edit-Friendly DDPM inversion to SDXL-Turbo and discover two shortcomings: (1) the appearance of visual artifacts, and (2) insufficient editing strength.
+            We apply text-based editing methods like Edit-Friendly DDPM inversion to SDXL-Turbo and discover two
+            shortcomings: (1) the appearance of visual artifacts, and (2) insufficient editing strength.
             <br><br>
-            We trace the artifacts to misaligned noise statistics, and propose a time-shifting method to correct them. To improve editing strength, we analyze the Edit-Friendly equations and show that they can be broken into two components - one responsible for shifting the image between prompts, and one for shifting it between diffusion trajectories. We rescale the cross-prompt term and demonstrate that it increases editability without introducing novel artifacts. For additional details please see the paper.
+            We trace the artifacts to misaligned noise statistics, and propose a time-shifting method to correct them.
+            To improve editing strength, we analyze the Edit-Friendly equations and show that they can be broken into
+            two components - one responsible for shifting the image between prompts, and one for shifting it between
+            diffusion trajectories. We rescale the cross-prompt term and demonstrate that it increases editability
+            without introducing novel artifacts. For additional details please see the paper.
           </div>
 
           <div class="columns is-centered has-text-centered">
@@ -164,15 +213,22 @@
               <h4 class="title is-4">Fixing Visual Artifacts</h4>
               <div class="column is-centered has-text-centered">
                 <div class="content has-text-justified">
-                  Following Edit-Friendly, we observe that the noise statistics of the inverted noise-maps deviate significantly from the expected values at each step. In many-step diffusion models, these statistics tend to converge towards the end of the diffusion proccess, and the model can deal with any artifacts introduced along the way. With SDXL-Turbo, these steps are entirely skipped, and artifacts remain.
+                  Following Edit-Friendly, we observe that the noise statistics of the inverted noise-maps deviate
+                  significantly from the expected values at each step. In many-step diffusion models, these statistics
+                  tend to converge towards the end of the diffusion proccess, and the model can deal with any artifacts
+                  introduced along the way. With SDXL-Turbo, these steps are entirely skipped, and artifacts remain.
                   <br><br>
-                  We observe that the misaligned statistics are roughly time-shifted, with noise statistics matching the expected values at roughly 200 steps earlier. Hence, we simply provide both the scheduler and the model with a timestep parameter which is also shifted by 200 steps, eliminating the domain gap.
+                  We observe that the misaligned statistics are roughly time-shifted, with noise statistics matching the
+                  expected values at roughly 200 steps earlier. Hence, we simply provide both the scheduler and the
+                  model with a timestep parameter which is also shifted by 200 steps, eliminating the domain gap.
                 </div>
 
                 <img id="architecture" src="static/images/z_t_std_plot.jpg" />
               </div>
               <div class="content has-text-centered"><small>
-                  Edit-Friendly inversion with SDXL-Turbo leads to noise statistics (red) which are misaligned with the expected values (green). We propose a simple time-shift approach to re-align them (blue, purple), greatly reducing artifacts.
+                  Edit-Friendly inversion with SDXL-Turbo leads to noise statistics (red) which are misaligned with the
+                  expected values (green). We propose a simple time-shift approach to re-align them (blue, purple),
+                  greatly reducing artifacts.
                 </small>
               </div>
             </div>
@@ -181,13 +237,19 @@
               <h4 class="title is-4">Pseudo-guidance</h4>
               <div class="column is-centered has-text-centered">
                 <div class="content has-text-justified">
-                  We analyze the Edit-Friendly equations and demonstrate that they can be decomposted into two terms - one which controls the strength of the prompt, and another which shifts the original images to a new trajectory. We propose to apply a CFG-style rescaling only to the prompt term, and demonstrate that it can indeed improve editing strength without introducing new artifacts. Please see the paper for more details.
+                  We analyze the Edit-Friendly equations and demonstrate that they can be decomposted into two terms -
+                  one which controls the strength of the prompt, and another which shifts the original images to a new
+                  trajectory. We propose to apply a CFG-style rescaling only to the prompt term, and demonstrate that it
+                  can indeed improve editing strength without introducing new artifacts. Please see the paper for more
+                  details.
                 </div>
 
                 <img id="architecture" src="static/images/guidance_grid.jpg" />
 
                 <div class="content has-text-centered"><small>
-                    Editing results when scaling the cross-prompt ($w_p$, columns) and the cross-trajectory ($w_t$, rows) terms. Scaling only the cross-prompt term leads to improved editing results, without artifacts.
+                    Editing results when scaling the cross-prompt ($w_p$, columns) and the cross-trajectory ($w_t$,
+                    rows) terms. Scaling only the cross-prompt term leads to improved editing results, without
+                    artifacts.
                   </small>
                 </div>
               </div>
@@ -212,9 +274,12 @@
           <h2 class="title is-3">Edit Friendly and Delta Denoising Score equivalence</h2>
           <div class="content has-text-justified">
             <p>
-              Our investigation into the Edit-Friendly DDPM proccess reveals that it shares similar form to the corrections employed by Delta Denoising Score.
-              Surprisingly, we prove that under an appropriate choice of learning rates and time-step sampling, the two methods are functionally equivalent and create the exact same results.
-              This finding can also be extended to the recent Posterior Distillation Sampling (PDS) method, if applied to image editing.
+              Our investigation into the Edit-Friendly DDPM proccess reveals that it shares similar form to the
+              corrections employed by Delta Denoising Score.
+              Surprisingly, we prove that under an appropriate choice of learning rates and time-step sampling, the two
+              methods are functionally equivalent and create the exact same results.
+              This finding can also be extended to the recent Posterior Distillation Sampling (PDS) method, if applied
+              to image editing.
           </div>
         </div>
       </div>
@@ -251,7 +316,9 @@
 
       <h2 class="title is-3">Comparisons to Prior Work (Multi-step)</h2>
       <div class="content has-text-justified">
-        We compare our 4-step results to the existing state-of-the-art editing approaches in the many-step regieme. Our method can achieve better or comparable quality to the state-of-the-art, but it does so x6 faster than the fastest baseline, and up to x630 when compared to the top scoring method.
+        We compare our 4-step results to the existing state-of-the-art editing approaches in the many-step regieme. Our
+        method can achieve better or comparable quality to the state-of-the-art, but it does so x6 faster than the
+        fastest baseline, and up to x630 when compared to the top scoring method.
       </div>
       <div class="column is-centered has-text-centered is-widescreen">
         <img id="face_comps" src="static/images/comparisons.jpg" />
@@ -260,13 +327,15 @@
     </div>
 
     <br>
-    
+
     <div class="container is-max-desktop has-text-centered">
       <!-- Abstract. -->
 
       <h2 class="title is-3">Comparisons to Prior Work (Few-step)</h2>
       <div class="content has-text-justified">
-        We further compare our method to few-step alternatives. We can better maintain the original image content while matching the semantic intent of the edit. Our method also avoids the visual artifacts that appear in the baseline Edit-Friendly approach.
+        We further compare our method to few-step alternatives. We can better maintain the original image content while
+        matching the semantic intent of the edit. Our method also avoids the visual artifacts that appear in the
+        baseline Edit-Friendly approach.
       </div>
       <div class="column is-centered has-text-centered is-widescreen">
         <img id="face_comps" src="static/images/comparisons_few_step.jpg" />
@@ -286,9 +355,9 @@
           <img id="face_comps" src="static/images/more_results.jpg" />
         </div>
         <div class="content is-four-fifths has-text-centered"><small>
-          Additional text-based editing results generated using our method with SDXL-Turbo and 4 steps.
-        </small>
-      </div>
+            Additional text-based editing results generated using our method with SDXL-Turbo and 4 steps.
+          </small>
+        </div>
       </div>
       <!--/ New domain editing. -->
     </div>
@@ -298,17 +367,27 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <p>If you find our work useful, please cite our paper:</p>
-      <pre><code>Coming soon</code></pre>
+      <pre><code>
+@misc{deutch2024turboedittextbasedimageediting,
+  title={TurboEdit: Text-Based Image Editing Using Few-Step Diffusion Models}, 
+  author={Gilad Deutch and Rinon Gal and Daniel Garibi and Or Patashnik and Daniel Cohen-Or},
+  year={2024},
+  eprint={2408.00735},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2408.00735}, 
+}
+  </code></pre>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
-        <a class="icon-link" href="">
+        <a class="icon-link" href="https://arxiv.org/abs/2408.00735">
           <i class="fas fa-file-pdf"></i>
         </a>
-        <a class="icon-link" href="" class="external-link" disabled>
+        <a class="icon-link" href="https://github.com/GiilDe/turbo-edit" class="external-link" disabled>
           <i class="fab fa-github"></i>
         </a>
       </div>
